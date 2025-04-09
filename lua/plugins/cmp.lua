@@ -41,7 +41,13 @@ return {
 						end
 					end, { "i", "s" }),
 
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() and cmp.get_selected_entry() then
+							cmp.confirm({ select = true })
+						else
+							fallback() -- Insert newline
+						end
+					end, { "i", "s" }),
 
 					-- Optional: make <Space> confirm as well (rare)
 					["<Space>"] = cmp.mapping(function(fallback)
