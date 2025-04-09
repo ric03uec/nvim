@@ -6,7 +6,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- list of parsers to install
-				ensure_installed = { "go", "lua", "bash", "markdown" },
+				ensure_installed = { "go", "lua", "bash", "markdown", "vim", "json", "yaml" },
 
 				-- install languages synchronously (only applied to `ensure_installed`)
 				sync_install = false,
@@ -33,9 +33,6 @@ return {
 
 				-- Add any other modules here if needed, e.g., incremental_selection, textobjects
 			})
-
-			-- Set keymap here to ensure it’s defined after plugin loads
-			vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 		end,
 	},
 }
