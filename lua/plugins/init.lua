@@ -3,4 +3,5 @@ return {
 	require("plugins.treesitter"),
 	require("plugins.filetree"),
 	require("plugins.telescope"),
+	require("plugins.copilot-chat"),
 }
