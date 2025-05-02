@@ -23,10 +23,10 @@ map("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)
 -- TODO: make the set function format the same as function up top
 
 -- Save current buffer
-map("n", "<leader>w", ":w<CR>", opts)
+map("n", "<leader>w", "<cmd>w<CR>", opts)
 
 -- Quit current tab
-map("n", "<leader>q", ":tabclose<CR>", { noremap = true, silent = true })
+map("n", "<leader>q", "<cmd>tabclose<CR>", { noremap = true, silent = true })
 
 map("n", "<leader><Space>", function()
 	require("which-key").show("<leader>")
