@@ -11,6 +11,17 @@ return {
 					},
 					sorting_strategy = "ascending",
 					winblend = 10,
+					file_ignore_patterns = {
+						"%.git/",
+						"node_modules/",
+						"%.cache/",
+						"dist/",
+						"build/",
+						"target/",
+						"%.next/",
+						"venv/",
+						"__pycache__/",
+					},
 				},
 			})
 		end,
