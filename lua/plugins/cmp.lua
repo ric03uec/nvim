@@ -20,7 +20,8 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				mapping = cmp.mapping.preset.insert({
+
+				mapping = {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -41,22 +42,19 @@ return {
 						end
 					end, { "i", "s" }),
 
-					["<C-j>"] = cmp.mapping.select_next_item({
-						behavior = cmp.SelectBehavior.Insert,
-					}),
+					["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
-					["<C-k>"] = cmp.mapping.select_prev_item({
-						behavior = cmp.SelectBehavior.Insert,
-					}),
-
+					-- ✅ Reliable and consistent <CR> behavior
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() and cmp.get_selected_entry() then
-							cmp.confirm({ select = true })
+							cmp.confirm({ select = false })
 						else
-							fallback() -- Insert newline
+							fallback()
 						end
 					end, { "i", "s" }),
-				}),
+				},
+
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
