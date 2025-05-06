@@ -7,7 +7,8 @@ map("i", "jk", "<Esc>l", opts)
 -- Common movement
 map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
-
+--map("n", "<leader>x", ":bdelete<CR>", opts)
+map("n", "<leader>x", ":Bdelete<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 -- Move between splits
 --map("n", "<C-h>", "<C-w>h", opts)
 --map("n", "<C-j>", "<C-w>j", opts)
