@@ -5,4 +5,5 @@ return {
 	require("plugins.filetree"),
 	require("plugins.telescope"),
 	require("plugins.copilot-chat"),
+	require("plugins.avante"),
 }

@@ -17,6 +17,7 @@ return {
 				vim.keymap.set("n", "o", api.node.open.tab, opts("Open: New Tab"))
 				vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open File"))
 				vim.keymap.set("n", "<C-e>", api.tree.close, opts("Close Tree"))
+				vim.keymap.set("n", "a", api.fs.create, opts("Create File or Directory"))
 			end
 
 			require("nvim-tree").setup({
