@@ -6,4 +6,5 @@ return {
 	require("plugins.telescope"),
 	require("plugins.copilot-chat"),
 	require("plugins.avante"),
+	require("plugins.lualine"),
 }

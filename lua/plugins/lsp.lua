@@ -34,9 +34,21 @@ return {
 				},
 			})
 
-			-- Set up Python
+			-- Configure pyright
 			require("lspconfig").pyright.setup({
 				capabilities = capabilities,
+				settings = {
+					python = {
+						python = {
+							pythonPath = "./.venv/bin/python",
+						},
+						analysis = {
+							autoSearchPaths = true,
+							diagnosticMode = "workspace", -- or "openFilesOnly"
+							useLibraryCodeForTypes = true,
+						},
+					},
+				},
 			})
 		end,
 	},
