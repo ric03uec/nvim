@@ -6,9 +6,8 @@ map("i", "jk", "<Esc>l", opts)
 
 -- Common movement
 map("n", "<leader>w", ":w<CR>", opts)
-map("n", "<leader>q", ":q<CR>", opts)
+map("n", "<leader>q", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close current buffer tab" })
 -- Close buffer tab (IDE-like)
-map("n", "<leader>x", "<cmd>BufferLineCloseOthers<CR>", { noremap = true, silent = true, desc = "Close other buffer tabs" })
 map("n", "<C-w>", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close current buffer tab" })
 map("n", "<leader>bd", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 -- Move between buffers like IDE tabs
