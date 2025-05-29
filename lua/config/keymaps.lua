@@ -6,9 +6,15 @@ map("i", "jk", "<Esc>l", opts)
 
 -- Common movement
 map("n", "<leader>w", ":w<CR>", opts)
-map("n", "<leader>q", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close current buffer tab" })
+map("n", "<leader>q", function()
+	local buffers = vim.fn.getbufinfo({buflisted = 1})
+	if #buffers > 1 then
+		vim.cmd("Bdelete")
+	else
+		vim.notify("Only one buffer open — not closing it!", vim.log.levels.INFO)
+	end
+end, { noremap = true, silent = true, desc = "Close current buffer tab" })
 -- Close buffer tab (IDE-like)
-map("n", "<C-w>", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close current buffer tab" })
 map("n", "<leader>bd", "<cmd>Bdelete<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 -- Move between buffers like IDE tabs
 map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true, desc = "Previous buffer tab" })
@@ -24,11 +30,9 @@ map("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)
 
 -- TODO: make the set function format the same as function up top
 
--- Save current buffer
-map("n", "<leader>w", "<cmd>w<CR>", opts)
+-- Removed duplicate <leader>w mapping
 
--- Quit current tab
-map("n", "<leader>q", "<cmd>tabclose<CR>", { noremap = true, silent = true })
+-- Removed duplicate <leader>q mapping that was causing tabclose conflicts
 
 map("n", "<leader><Space>", function()
 	require("which-key").show("<leader>")
@@ -44,7 +48,7 @@ end
 map("n", "q", function()
 	local buffers = vim.fn.getbufinfo({buflisted = 1})
 	if #buffers > 1 then
-		vim.cmd("Bdelete")
+		vim.cmd("bdelete")
 	else
 		vim.notify("Only one buffer open — not closing it!", vim.log.levels.INFO)
 	end
