@@ -50,6 +50,24 @@ return {
 					},
 				},
 			})
+
+			-- Configure global diagnostic display
+			vim.diagnostic.config({
+				virtual_text = true, -- set to true if you want inline text
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+				float = {
+					focusable = true,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+					wrap = true, -- ensures long messages are wrapped
+				},
+			})
 		end,
 	},
 }
