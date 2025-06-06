@@ -15,6 +15,16 @@ return {
 			disable_tools = true,
 			--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
 		},
+		bedrock_esper = {
+			region = "us-west-2", -- AWS region where Bedrock is available
+			model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
+			timeout = 30000, -- Timeout in milliseconds
+			temperature = 0,
+			max_completion_tokens = 4096,
+			disable_tools = true,
+			aws_region = "us-west-2", -- AWS region for Bedrock
+			aws_profile = "default", -- AWS profile to use
+		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
