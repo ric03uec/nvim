@@ -3,27 +3,24 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
-		-- add any opts here
-		-- for example
 		provider = "openai",
-		openai = {
-			endpoint = "https://api.openai.com/v1",
-			model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-			timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-			temperature = 0,
-			max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-			disable_tools = true,
-			--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-		},
-		bedrock_esper = {
-			region = "us-west-2", -- AWS region where Bedrock is available
-			model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
-			timeout = 30000, -- Timeout in milliseconds
-			temperature = 0,
-			max_completion_tokens = 4096,
-			disable_tools = true,
-			aws_region = "us-west-2", -- AWS region for Bedrock
-			aws_profile = "default", -- AWS profile to use
+		providers = {
+			openai = {
+				endpoint = "https://api.openai.com/v1",
+				model = "gpt-4o",
+				extra_request_body = {
+					temperature = 0,
+					max_tokens = 8192,
+				},
+			},
+			bedrock = {
+				endpoint = "https://bedrock-runtime.us-west-2.amazonaws.com",
+				model = "us.anthropic.claude-sonnet-4-20250514-v1:0",
+				extra_request_body = {
+					temperature = 0,
+					max_tokens = 4096,
+				},
+			},
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -34,6 +31,7 @@ return {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
+		"rcarriga/nvim-notify",
 		--- The below dependencies are optional,
 		"echasnovski/mini.pick", -- for file_selector provider mini.pick
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
