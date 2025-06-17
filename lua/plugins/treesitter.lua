@@ -15,7 +15,7 @@ return {
 				auto_install = true,
 
 				-- list of parsers to ignore installing (or use "all")
-				ignore_install = {},
+				ignore_install = { "toml" },
 
 				modules = {},
 
