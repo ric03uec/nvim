@@ -21,6 +21,7 @@ return {
 						"%.next/",
 						"venv/",
 						"__pycache__/",
+						"%.egg%-info/",
 					},
 				},
 			})
