@@ -60,6 +60,29 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
 -- Additional IDE-like buffer tab operations
 map("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { noremap = true, silent = true, desc = "Pin/unpin buffer tab" })
 map("n", "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", { noremap = true, silent = true, desc = "Close unpinned buffer tabs" })
-map("n", "<leader>br", "<cmd>BufferLineCloseRight<CR>", { noremap = true, silent = true, desc = "Close buffer tabs to the right" })
-map("n", "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", { noremap = true, silent = true, desc = "Close buffer tabs to the left" })
 map("n", "<leader>bo", "<cmd>BufferLineCloseOthers<CR>", { noremap = true, silent = true, desc = "Close other buffer tabs" })
+
+-- Buffer tab movement (equivalent to tabmove)
+map("n", "<leader>bh", "<cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true, desc = "Move buffer tab left" })
+map("n", "<leader>bl", "<cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true, desc = "Move buffer tab right" })
+
+-- Custom tabmove commands that work with bufferline
+vim.api.nvim_create_user_command('Tabmove', function(opts)
+	local arg = opts.args
+	if arg == '-1' then
+		vim.cmd('BufferLineMovePrev')
+	elseif arg == '+1' or arg == '1' then
+		vim.cmd('BufferLineMoveNext')
+	elseif arg == '0' then
+		-- Move to first position - bufferline doesn't have direct command, so we move to start
+		for _ = 1, 10 do  -- Move left multiple times to reach start
+			vim.cmd('BufferLineMovePrev')
+		end
+	else
+		-- For specific positions, try to move to that buffer position
+		local pos = tonumber(arg)
+		if pos then
+			vim.cmd('BufferLineGoToBuffer ' .. (pos + 1)) -- BufferLine uses 1-based indexing
+		end
+	end
+end, { nargs = 1, desc = "Move buffer tab (bufferline equivalent of tabmove)" })
