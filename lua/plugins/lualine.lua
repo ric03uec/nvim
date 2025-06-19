@@ -27,7 +27,14 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff" },
-					lualine_c = { "filename", python_venv }, -- <-- venv here
+					lualine_c = { 
+						{
+							"filename",
+							path = 2, -- 0 = just filename, 1 = relative path, 2 = absolute path
+							file_status = true,
+						}, 
+						python_venv 
+					}, -- <-- venv here
 					lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
