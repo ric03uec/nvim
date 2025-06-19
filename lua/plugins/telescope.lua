@@ -16,13 +16,15 @@ return {
 						"node_modules/",
 						"%.cache/",
 						"dist/",
-						"build/",
+						-- Don't ignore build directory
 						"target/",
 						"%.next/",
 						"venv/",
 						"__pycache__/",
 						"%.egg%-info/",
 					},
+					-- Respect gitignore but ensure we can find .env files
+					respect_gitignore = true,
 				},
 			})
 		end,

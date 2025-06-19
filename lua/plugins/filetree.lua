@@ -22,6 +22,10 @@ return {
 
 			require("nvim-tree").setup({
 				on_attach = my_on_attach,
+				update_focused_file = {
+					enable = true,
+					update_cwd = false,
+				},
 				view = {
 					width = 30,
 					side = "left",
@@ -41,6 +45,9 @@ return {
 
 			-- Leader shortcut to toggle the tree
 			vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
+			
+			-- Add a shortcut to find file in tree
+			vim.keymap.set("n", "<leader>ff", "<cmd>NvimTreeFindFile<CR>", { noremap = true, silent = true })
 		end,
 	},
 }
