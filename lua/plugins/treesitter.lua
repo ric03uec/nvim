@@ -6,7 +6,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- list of parsers to install
-				ensure_installed = { "go", "lua", "bash", "markdown", "vim", "json", "yaml", "dockerfile" },
+				ensure_installed = { "go", "lua", "bash", "markdown", "vim", "json", "yaml" },
 
 				-- install languages synchronously (only applied to `ensure_installed`)
 				sync_install = false,
@@ -15,7 +15,7 @@ return {
 				auto_install = true,
 
 				-- list of parsers to ignore installing (or use "all")
-				ignore_install = { "toml" },
+				ignore_install = { "toml", "dockerfile" },
 
 				modules = {},
 
