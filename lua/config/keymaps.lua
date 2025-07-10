@@ -57,6 +57,17 @@ end, { noremap = true, silent = true, desc = "Close buffer tab" })
 -- Set keymap here to ensure it’s defined after plugin loads
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
 
+-- LSP and diagnostics
+map("n", "<leader>d", function()
+	vim.diagnostic.open_float(nil, {
+		focusable = true,
+		border = "rounded",
+		source = "always",
+		wrap = true,
+		max_width = 120,
+	})
+end, { desc = "Show full diagnostic message" })
+
 -- Additional IDE-like buffer tab operations
 map("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { noremap = true, silent = true, desc = "Pin/unpin buffer tab" })
 map("n", "<leader>bP", "<cmd>BufferLineGroupClose ungrouped<CR>", { noremap = true, silent = true, desc = "Close unpinned buffer tabs" })

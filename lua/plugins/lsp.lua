@@ -53,7 +53,15 @@ return {
 
 			-- Configure global diagnostic display
 			vim.diagnostic.config({
-				virtual_text = true, -- set to true if you want inline text
+				virtual_text = {
+					format = function(diagnostic)
+						local message = diagnostic.message
+						if #message > 100 then
+							return message:sub(1, 97) .. "..."
+						end
+						return message
+					end,
+				},
 				signs = true,
 				underline = true,
 				update_in_insert = false,
@@ -65,7 +73,7 @@ return {
 					source = "always",
 					header = "",
 					prefix = "",
-					wrap = true, -- ensures long messages are wrapped
+					wrap = true,
 				},
 			})
 		end,
